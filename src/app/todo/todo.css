@@ -1,0 +1,12 @@
+.done {
+  text-decoration: line-through;
+  background-color: #EFEFEF;
+}
+
+.task-create-button {
+  top: auto;
+  right: 20px;
+  bottom: 20px;
+  left: auto;
+  position: fixed;
+}

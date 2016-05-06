@@ -1,0 +1,17 @@
+<!--CONTENT-->
+<md-content layout="column" flex layout-align="center" ng-include="'app/todo/views/todo-list.html'">
+</md-content>
+<!--/ CONTENT-->
+
+<!--SIDENAV RIGHT-->
+<div ng-include="'app/todo/partials/todo-sidenav-right.html'"></div>
+<!--/ SIDENAV RIGHT-->
+
+<!--CREATE TASK BUTTON-->
+<md-button id="create-task-button" ng-click="vm.openTaskDialogBox($event)" class="md-fab task-create-button" aria-label="Create Task">
+  <md-tooltip md-direction="left">
+    Create New Task
+  </md-tooltip>
+  <md-icon><i class="material-icons">add</i></md-icon>
+</md-button>
+<!--/ CREATE TASK BUTTON-->

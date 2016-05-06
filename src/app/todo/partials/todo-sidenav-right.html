@@ -1,0 +1,57 @@
+<md-sidenav layout="column" class="md-sidenav-right md-whiteframe-z2" md-component-id="todo-right">
+  <md-toolbar layout="row">
+    <h1 class="md-toolbar-tools">Filters</h1>
+    <md-button aria-label="Clear Filters" ng-click="vm.clearFilters()">
+      <md-tooltip md-direction="bottom">
+        Clear All Filters
+      </md-tooltip>
+      <md-icon><i class="material-icons">clear</i></md-icon>
+    </md-button>
+  </md-toolbar>
+  <md-content layout-padding>
+    <form name="todo-filters">
+      <md-chips ng-model="vm.filter.recipients" md-require-match="true">
+        <md-autocomplete
+          md-input-name="recipientsFilterAutocomplete"
+          md-selected-item="vm.selectedUser"
+          md-search-text="vm.userSearchText"
+          md-items="user in vm.userSearch(vm.userSearchText)"
+          md-item-text="user.username"
+          placeholder="Recipients">
+          <span class="highlighted-user" ng-if="!user.users">{{user.title}} {{user.firstname}} {{user.lastname}}</span>
+          <span class="highlighted-group" ng-if="user.users">{{user.name}}</span>
+        </md-autocomplete>
+        <md-chip-template>
+        <span ng-if="!$chip.users">
+          <strong><md-icon><i
+            class="material-icons">person</i></md-icon> {{$chip.firstname}} {{$chip.lastname}}</strong>
+        </span>
+          <span ng-if="$chip.users" ng-click="vm.openGroupUsersDialogBox($event, $chip)">
+          <strong><md-icon><i class="material-icons">group</i></md-icon> {{$chip.name}}</strong>
+        </span>
+        </md-chip-template>
+      </md-chips>
+
+      <md-chips ng-model="vm.filter.patients" md-require-match="true">
+        <md-autocomplete
+          md-input-name="patientsFilterAutocomplete"
+          md-selected-item="vm.selectedPatient"
+          md-search-text="vm.patientSearchText"
+          md-items="user in vm.patientSearch(vm.patientSearchText)"
+          md-item-text="user.username"
+          placeholder="Patients">
+          <span class="highlighted-patient">{{user.title}} {{user.firstname}} {{user.lastname}}</span>
+        </md-autocomplete>
+        <md-chip-template>
+            <span>
+              <strong>{{$chip.firstname}} {{$chip.lastname}}</strong>
+            </span>
+        </md-chip-template>
+      </md-chips>
+
+      <md-switch ng-model="vm.filter.priority" aria-label="High Priority">
+        High Priority
+      </md-switch>
+    </form>
+  </md-content>
+</md-sidenav>

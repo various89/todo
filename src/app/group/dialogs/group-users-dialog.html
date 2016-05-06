@@ -1,0 +1,24 @@
+<md-dialog id="groupUserDialog" aria-label="Show Users of Group" ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <span class="title">Members of {{vm.group.name}}</span>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="vm.cancel()">
+          <i class="material-icons" aria-label="Close dialog">close</i>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content layout-padding>
+      <md-list>
+        <md-list-item class="md-1-line" ng-repeat="user in vm.group.users">
+          <div class="md-list-item-text">
+            <h3>{{user.title}} {{user.firstname}} {{user.lastname}}</h3>
+          </div>
+          <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+    </md-dialog-actions>
+</md-dialog>

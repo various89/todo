@@ -1,0 +1,27 @@
+<section ng-repeat="n in [0,1]">
+  <md-subheader ng-class="{'md-primary':n, 'md-warn':!n}">{{n == 0 ? "Open tasks" : "Closed tasks"}}</md-subheader>
+  <md-list layout-padding="">
+    <md-list-item ng-class="{done: task.done}" ng-if="n == 0 ? !task.done : task.done"
+                  ng-click="vm.openTaskDialogBox($event, task)"
+                  class="md-3-line"
+                  ng-repeat="task in vm.tasks |
+                  orderBy:'-priority' |
+                  filter:vm.filter.search.searchText |
+                  todoFilter: vm.filter.recipients:'recipients' |
+                  todoFilter: vm.filter.patients:'patients' |
+                  filter:{priority:vm.filter.priority ? true : ''}">
+      <md-checkbox ng-model="task.done">
+      </md-checkbox>
+      <div layout="row" layout-align="start center" flex>
+        <h4>{{task.shorttext}}</h4>
+      </div>
+      <md-button ng-if="task.priority" class="md-fab md-mini md-primary" aria-label="High Priority">
+        <md-tooltip md-direction="bottom">
+          High priority
+        </md-tooltip>
+        <md-icon><i class="material-icons">error</i></md-icon>
+      </md-button>
+      <md-divider ng-if="!$last"></md-divider>
+    </md-list-item>
+  </md-list>
+</section>

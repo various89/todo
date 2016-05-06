@@ -1,0 +1,28 @@
+<md-toolbar id="toolbar" ng-hide="vm.showSearch" class="md-whiteframe-z1" layout="row" layout-align="space-between center">
+  <h2 id="toolbar-title" class="md-toolbar-tools">
+    <span>{{vm.toolbar.title}}</span>
+  </h2>
+  <md-button class="search-button" aria-label="Search" ng-click="vm.showSearch =!vm.showSearch">
+    <md-icon><i class="material-icons">search</i></md-icon>
+  </md-button>
+  <md-button class="right-sidenav-button" aria-label="vm.toolbar.sidenav.label" ng-click="vm.toggleSidenav()">
+    <md-icon><i class="material-icons">filter_list</i></md-icon>
+  </md-button>
+</md-toolbar>
+
+<!--SEARCH TOOLBAR-->
+<md-toolbar id="toolbar-search" ng-show="vm.showSearch" class="md-whiteframe-z1 md-primary md-hue-1" layout="row"
+            layout-align="space-between center">
+  <md-button ng-click="vm.showSearch =!vm.showSearch;vm.toolbar.searchText=''">
+    <md-icon><i class="material-icons">arrow_back</i></md-icon>
+  </md-button>
+  <md-input-container class="toolbar-search-input" flex>
+    <label for="search">Search...</label>
+    <input type="text" id="search"
+           ng-model="vm.toolbar.searchText" autofocus>
+  </md-input-container>
+  <md-button class="right-sidenav-button" aria-label="vm.toolbar.sidenav.label" ng-click="vm.toggleSidenav()">
+    <md-icon><i class="material-icons">filter_list</i></md-icon>
+  </md-button>
+</md-toolbar>
+<!-- / SEARCH TOOLBAR-->

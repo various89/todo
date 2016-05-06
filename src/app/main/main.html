@@ -1,0 +1,33 @@
+<md-sidenav md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left"
+            class="md-whiteframe-z2 md-sidenav-left">
+  <md-toolbar>
+    <h1 class="md-toolbar-tools">Menu</h1>
+  </md-toolbar>
+  <md-content>
+    <md-list>
+      <md-list-item ui-sref="latido" class="md-1-line">
+        <md-icon><i class="material-icons">home</i></md-icon>
+        <span class="flex"><h4>HOME</h4></span>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+      <md-list-item ui-sref="latido.todo" class="md-1-line">
+        <md-icon><i class="material-icons">check_box</i></md-icon>
+        <span class="flex"><h4>TODO</h4></span>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</md-sidenav>
+
+<section layout="column" flex>
+  <md-toolbar class="main-toolbar md-padding" layout="row" layout-align="end center">
+    <md-button hide-gt-sm ng-click="main.toggleLeft()" aria-label="Menu">
+      <md-icon><i class="material-icons">menu</i></md-icon>
+    </md-button>
+  </md-toolbar>
+  <div layout="column" flex class="md-padding page-content" md-swipe-right="main.toggleLeft()">
+    <div ui-view="toolbar"></div>
+    <md-content flex ui-view="content">
+    </md-content>
+  </div>
+</section>
